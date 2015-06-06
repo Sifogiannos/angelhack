@@ -135,8 +135,6 @@ module.exports = function(passport, LocalStrategy){
   
   //set properties of user
   function setUserFromLinkedin(person, token, profile){
-
-
     var x = JSON.parse(profile._raw);
     //find current company name and company title
     for(var i= 0 ; i < x.positions.values.length; i++){
