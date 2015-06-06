@@ -3,6 +3,7 @@ var router = express.Router();
 
 var mongoose = require( 'mongoose' );
 var events = mongoose.model( 'events', events );
+var users = mongoose.model( 'users', users );
 
 
 router.get('/', function(req, res){
@@ -31,6 +32,27 @@ router.get('/:event_id', function(req, res) {
 	// 	}
 	// 	return res.json({status:"ok", event:event});
 	// });
+});
+
+router.get('/:event_id/search', function(req, res){
+	var event_id = req.params.event_id;
+	var search = req.body.search;
+	if(!search){
+		search = "";
+	}
+	
+	var query = {'$or':[{fullname : new RegExp(search, "i")}, {company_title : new RegExp(search, "i")}, {company : new RegExp(search, "i")}]};
+
+	if(!req.user){
+		return res.json({status:"error", message:"you are not logged in"});
+	}
+
+	users.find(query, '-linkedin -interests',function(err, participants){
+		if(err){
+			return res.json({status:"error", message:"Server error"});
+		}
+		return res.json({status:"ok", users:participants});
+	});
 });
 
 module.exports = router;
