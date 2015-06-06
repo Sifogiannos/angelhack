@@ -54,6 +54,6 @@ var notifications = new Schema({
 mongoose.model( 'users', users );
 mongoose.model( 'events', events );
 mongoose.model( 'messages', messages );
-mongoose.model( 'ntoifications', ntoifications );
+mongoose.model( 'notifications', notifications );
 
 mongoose.connect( 'mongodb://localhost/test' );
