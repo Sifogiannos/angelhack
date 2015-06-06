@@ -28,6 +28,9 @@ html,body{
 a{
   display:inline-block;
 }
+form{
+  position:relative;
+}
 .fullscreen{
   position:absolute;
   left:0;
@@ -37,8 +40,37 @@ a{
   padding:1em;
 }
 .background-image{
-  background-image:linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0, 0.4)), url('/img/appBackground.jpg');
+  background-image:linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)), url('/img/appBackground.jpg');
   background-size:cover;
+  color:#fff;
+  overflow:hidden;
+}
+.overflow-scroll{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  overflow:auto;
+  padding:1em;
+}
+.overflow-scroll form{
+  padding-bottom:120px;
+}
+.background-image input::-webkit-input-placeholder {
+    opacity:.8 !important; /* for chrome */
+}
+
+.background-image input:-moz-placeholder { /* Firefox 18- */
+    opacity:.8;
+}
+
+.background-image input::-moz-placeholder {  /* Firefox 19+ */
+    opacity:.8;
+}
+
+.background-image input:-ms-input-placeholder {  
+   opacity:.8;
 }
 .prm-color{
   color:#56c2cc;
@@ -50,6 +82,27 @@ a{
 .bg-linkedin-color{
   color:#fff;
   background-color: #007bb6;
+}
+.text-center{
+  text-align:center;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+.font-light{
+  font-weight:300;
+}
+.font-bold{
+  font-weight:bold;
 }
 .button{
   padding:6px 12px;
@@ -69,7 +122,7 @@ a{
 .button-rounded{
   border-radius:30px;
 }
-form input{
+form input,form textarea{
   width:100%;
   border:none;
   outline:none;
@@ -78,18 +131,41 @@ form input{
 .input{
   position:relative;
   border-bottom:1px solid #bdccd4;
-  display:table;
-  width:100%;
   margin-bottom:1em;
 }
-.input > i{
+.with-icon{
+  display:table;
+}
+.with-icon > i{
   display:table-cell;
   color:#fff;
   margin-right:3px;
 }
-.input > input{
+.with-icon > input{
   display:table-cell;
+}
+.input input,.input textarea{
+  width:100%;
+  padding:10px 15px;
 }
 .white-color{
   color:#fff;
+}
+.footer-bottom{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#fff;
+  padding:1em;
+}
+.footer-bottom .buttons{
+  padding:1em;
+}
+.border-left-grey{
+  border-left:1px solid #ccc;
+}
+.no-padding-left{
+  padding-left:0;
 }

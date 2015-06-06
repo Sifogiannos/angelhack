@@ -3,33 +3,9 @@
 	text-align:center;
 	margin-bottom:25px;
 }
-.input{
-	font-size:22px;
-}
 form button{
 	margin:1em 0 ;
 }
-input::-webkit-input-placeholder {
-    opacity:.8 !important; /* for chrome */
-}
-
-input:-moz-placeholder { /* Firefox 18- */
-    opacity:.8;
-}
-
-input::-moz-placeholder {  /* Firefox 19+ */
-    opacity:.8;
-}
-
-input:-ms-input-placeholder {  
-   opacity:.8;
-}
-footer{
-	position:absolute;
-	bottom:0;
-	left:0;
-	right:0;
-	text-align:center;
-	color:#fff;
-	padding:1em;
+body{
+	font-size:22px;
 }

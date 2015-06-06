@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name = "viewport"  content="minimal-ui width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0">
+    <meta name = "msapplication-tap-highlight" content="no">
+    <title>Stranded | First steps</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/main-theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/checkbox.css">
+    <link rel="stylesheet" type="text/css" href="/css/walkthrough.css">
+  </head>
+
+  <body>
+  	<section class="fullscreen background-image">
+      <section class="steps overflow-scroll">
+        <article id="step-1" class="step show">
+          <form class="js-form-step-1">
+            <div class="text-center">
+              <h1 class="font-light">Create your </br> profile</h1>
+            </div>
+            <div class="clearfix">
+              <div class="no-padding-left input col-xs-6">
+                <input type="text" class="white-color" name="username" placeholder="First Name">
+              </div>
+              <div class="no-padding-left border-left-grey input col-xs-6">
+                <input type="text" class="white-color" name="text" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="input">
+              <input type="text" class="white-color" name="text" placeholder="Job Title">
+            </div>
+            <div class="input">
+              <input type="text" class="white-color" name="text" placeholder="Company">
+            </div>
+            <h3>I am a</h3>
+            <div class="checkbox">
+              <input type="checkbox" id="developer">
+              <label for="developer">Developer</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="designer">
+              <label for="designer">Designer</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="enterpreneur">
+              <label for="enterpreneur">Enterpreneur</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="investor">
+              <label for="investor">Investor</label>
+            </div>
+          </form>
+        </article>
+        <article id="step-2" class="step hide">
+          <form class="js-form-step-2">
+            <div class="text-center">
+              <h1 class="font-light">Some more details </br>about you</h1>
+            </div>
+            <label>Enter some of your skills</label>
+            <div class="input">
+              <input type="text" class="white-color" name="text" placeholder="ex: HTML5,CSS">
+            </div>
+          </form>
+        </article>
+        <article id="step-3" class="step hide">
+          <form class="js-form-step-2">
+            <div class="text-center">
+              <h1 class="font-light">What kind of person would you like to meet?</h1>
+            </div>
+            <h3>I would like to meet a :</h3>
+            <div class="checkbox">
+              <input type="checkbox" id="developer">
+              <label for="developer">Developer</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="designer">
+              <label for="designer">Designer</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="enterpreneur">
+              <label for="enterpreneur">Enterpreneur</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="investor">
+              <label for="investor">Investor</label>
+            </div>
+          </form>
+        </article>
+        <footer class="footer-bottom">
+          <div class="buttons">
+            <button type="submit" id="submitButton" class="button button-big button-rounded bg-prm-color">Next</button>
+          </div>
+        </footer>
+      </section>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/libs/crossvent.min.js"></script>
+    <script src="/js/walkthrough.js"></script>
+  </body>
+
+</html>

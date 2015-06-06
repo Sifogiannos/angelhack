@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name = "viewport"  content="minimal-ui width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0">
+    <meta name = "msapplication-tap-highlight" content="no">
     <title>Stranded | Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -17,11 +18,11 @@
   		</section>
   		<section class="login-form">
   			<form action="/login" method="post">
-	  			<div class="input">
+	  			<div class="input with-icon">
 	  				<i class="fa fa-user"></i>
 	  				<input type="text" class="white-color" name="username" placeholder="Username">
 	  			</div>
-	  			<div class="input">
+	  			<div class="input with-icon">
 	  				<i class="fa fa-lock"></i>
 	  				<input type="password" class="white-color" name="password" placeholder="Password">
 	  			</div>
@@ -29,7 +30,7 @@
 	  			<a href="#" class="button button-big button-rounded bg-linkedin-color"><i class="fa fa-linkedin"></i> Sign in using linkedin</a>
   			</form>
   		</section>
-  		<footer>
+  		<footer class="footer-bottom">
   			<p>Dont have an account? <a href="/signup" class="prm-color">Sign up</a></p>
   		</footer>
   	</section>
