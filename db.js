@@ -26,7 +26,8 @@ var users = new Schema({
     numofConnections    : Number,
   },
   date_created 				: Date,
-  last_login 					: Date
+  last_login 					: Date,
+  profileSteps  			: Number
 });
 
 var events = new Schema({

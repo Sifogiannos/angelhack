@@ -28,12 +28,14 @@ window.$ = require('jquery');
 				surname:document.getElementById('lname').value,
 				jobTitle:document.getElementById('jobTitle').value,
 				company:document.getElementById('company').value,
-				categories:categories
+				categories:categories,
+				step: step
 			}
 			console.log(data);
 			$.ajax({
 				url: '/',
 				type: 'PUT',
+				dataType:'json',
 				data: data,
 			})
 			.done(function() {
@@ -42,7 +44,8 @@ window.$ = require('jquery');
 		}
 		else if(step==1){
 			var data = {
-				skills : nsg.value()
+				skills : nsg.tags(),
+				step:step
 			}
 			console.log(data);
 			$.ajax({
@@ -55,13 +58,14 @@ window.$ = require('jquery');
 			});
 		}
 		else if(step==2){
-			var categoryNodes = document.querySelectorAll('.js-form-step-3.checkbox :checked');
+			var categoryNodes = document.querySelectorAll('.js-form-step-3 .checkbox :checked');
 			var categories = [];
 			for (var i = 0; i < categoryNodes.length; i++) {
 				categories.push(categoryNodes[i].name);
 			};
 			var data = {
-				interests:categories
+				interests:categories,
+				step:step
 			}
 			console.log(data);
 			$.ajax({
@@ -70,7 +74,7 @@ window.$ = require('jquery');
 				data: data,
 			})
 			.done(function() {
-				console.log("success");
+				window.location.href="/";
 			});
 		}
 		else{
