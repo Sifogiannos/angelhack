@@ -24,6 +24,7 @@ var authentication = require('./routes/authentication.js');
 
 var routes = require('./routes/index');
 var user = require('./routes/users');
+var events = require('./routes/events');
 
 var app = express();
 
@@ -51,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', user);
+app.use('/events', events);
 
 //Local authentication
 app.get('/login', authentication.login);

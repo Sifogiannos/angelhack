@@ -4,8 +4,8 @@ var router = express.Router();
 var mongoose = require( 'mongoose' );
 var users = mongoose.model( 'users', users );
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+
+router.get('/', function(req, res) {
 	if(!req.user){
 		return res.render('login');
 	}
@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 				user : user
 			});
 		}
-		res.render('dashboard', {
+		return res.render('dashboard', {
 			user : user
 		});
 	});
@@ -63,4 +63,5 @@ router.put('/', function(req, res){
 		return res.json({status:"ok", user:user});
 	});
 });
+
 module.exports = router;
