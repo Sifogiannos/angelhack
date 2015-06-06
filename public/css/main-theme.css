@@ -28,9 +28,19 @@ html,body{
 }
 a{
   display:inline-block;
+  text-decoration: none;
+}
+a:focus,a:active{
+  outline:none;
+  text-decoration: none;
 }
 form{
   position:relative;
+}
+ul{
+  list-style:none;
+  margin: 0;
+  padding: 0;
 }
 .fullscreen{
   position:absolute;
@@ -168,6 +178,9 @@ form input,form textarea{
 .border-left-grey{
   border-left:1px solid #ccc;
 }
+.padding{
+  padding: 15px;
+}
 .no-padding-left{
   padding-left:0;
 }
@@ -186,7 +199,9 @@ form input,form textarea{
 }
 .table{
   display:table;
+  margin-bottom:0;
 }
 .table-cell{
   display:table-cell;
+  vertical-align: middle;
 }

@@ -29,6 +29,7 @@
       </div>
       <header>
         <a href="#" id="open-button" class="white-color"><i class="fa fa-bars"></i></a>
+        <a href="/" class="white-color" style="font-size:18px">| Go Back</a>
         <div class="right">
           <a href="#" class="white-color notifications-container" id="notifications"><span class="notifications bg-prm-color">4</span> <i class="fa fa-bell-o"></i></a>
         </div>
@@ -42,9 +43,9 @@
     <section>
       <div class="top-bar table">
         <div class="select-bar table-cell">
-          <select name="" id="">
-            <option>Similar to you</option>
-            <option>All</option>
+          <select name="" id="selector">
+            <option value="similar">Similar to you</option>
+            <option value="all">All</option>
           </select>
           <i class="fa fa-angle-down"></i>
         </div>
@@ -58,8 +59,41 @@
           </form>
         </div>
       </div>
+      <ul class="user-list">
+
+        <li class="user table">
+          <a href="/users/1">
+            <div class="user-photo table-cell">
+              <img src="/img/nick.jpg" alt="">
+            </div>
+            <div class="user-details table-cell">
+              <h3>Nick Rossolatos</h3>
+              <p>CTO @ panelsensor</p>
+            </div>
+          </a>
+        </li>
+        <li class="user table">
+          <div class="user-photo table-cell">
+            <img src="/img/default.png" alt="">
+          </div>
+          <div class="user-details table-cell">
+            <h3>Nick Rossolatos</h3>
+            <p>CTO @ panelsensor</p>
+          </div>
+        </li>
+        <li class="user table">
+          <div class="user-photo table-cell">
+            <img src="/img/nick.jpg" alt="">
+          </div>
+          <div class="user-details table-cell">
+            <h3>Nick Rossolatos</h3>
+            <p>CTO @ panelsensor</p>
+          </div>
+        </li>
+      </ul>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/libs/crossvent.min.js"></script>
     <script src="/js/event.js"></script>
   </body>
 
