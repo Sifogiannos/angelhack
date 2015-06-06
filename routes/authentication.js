@@ -22,7 +22,7 @@ exports.login = function(req, res){
 exports.signup = function(req, res){
   if(req.user)
     return res.redirect('/');
-  return res.render('sign_up');
+  return res.render('signup');
 };
 
 exports.logout = function(req, res){
@@ -44,7 +44,7 @@ exports.createUser = function(req, res){
     username      : username,
     password      : hash
   });
-  users.findOne({email:mail}).exec(function(err, user_exists){
+  users.findOne({username:username}).exec(function(err, user_exists){
     if(err) 
     	return res.json({status:"error", message:"error occured"});
     if(user_exists)
