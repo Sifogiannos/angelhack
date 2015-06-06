@@ -111,7 +111,7 @@ module.exports = function(passport, LocalStrategy){
         }
         //if use exists
         if(user){
-          user = setUserFromLinkedin(user, accessToken, profile);
+          return done(null, user);
         }
         //if user does not exists create an new one
         if(!user){
@@ -119,16 +119,16 @@ module.exports = function(passport, LocalStrategy){
             date_created  : Date.now()
           });
           user = setUserFromLinkedin(user, accessToken, profile);
+          //save new user or update the already existing
+          user.save(function(err, user){
+            if(err){
+              req.session.connect_error = "linkedin";
+              return done(null, false, { message: 'Could not create user'});
+            }else{
+              return done(null, user);
+            }
+          });
         }
-        //save new user or update the already existing
-        user.save(function(err, user){
-          if(err){
-            req.session.connect_error = "linkedin";
-            return done(null, false, { message: 'Could not create user'});
-          }else{
-            return done(null, user);
-          }
-        });
       });
     }
   }));
