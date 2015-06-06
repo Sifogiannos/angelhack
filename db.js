@@ -14,7 +14,8 @@ var users = new Schema({
 	picture_Url					: String,
 	public_Profile_Url 	: String,
 	categories 					: [String],
-	skills  						: [String], 					
+	skills  						: [String],
+	interests 					: [String], 					
 	linkedin        		: {
     exists              : { type: Boolean, default: false },
     token               : String,
