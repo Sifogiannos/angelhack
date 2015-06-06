@@ -1,12 +1,29 @@
+//require database file
+require('./db.js');
+var mongoose = require('mongoose');
+
+//authentication requirements
+var passport = require('passport');
+var flash = require('connect-flash');
+var LocalStrategy = require('passport-local').Strategy;
+
+
 var express = require('express');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//passport file
+require('./pass.js')(passport, LocalStrategy);
+
+var authentication = require('./routes/authentication.js');
+
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/users');
 
 var app = express();
 
@@ -20,10 +37,36 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: "angelhack",
+  store: new MongoStore({
+    db: 'sessionstore',
+    mongooseConnection: mongoose.connections[0]
+  })
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/users', user);
+
+//authentication
+app.get('/login', authentication.login);
+app.get('/signup', authentication.signup);
+app.post('/create_user', authentication.createUser);
+app.post('/login',
+  passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
+  function(req, res){
+    res.redirect('/');
+    //return res.json({status:"ok", data:req.user});
+  }
+);
+
+app.get('/logout', authentication.logout);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
