@@ -135,6 +135,7 @@ form input,form textarea{
 }
 .with-icon{
   display:table;
+  width:100%;
 }
 .with-icon > i{
   display:table-cell;

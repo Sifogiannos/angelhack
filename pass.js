@@ -105,6 +105,10 @@ module.exports = function(passport, LocalStrategy){
     // if he is not logged in
     }else{
       users.findOne({'linkedin.uid': profile.id}).exec(function(err, user){
+        var x= JSON.parse(profile._raw);
+        console.log(x.positions.values[0])
+        console.log(x.positions);
+
         if(err){
           req.session.connect_error = "linkedin";
           return done(null, false, { message: 'User not found'});
