@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 		return res.render('login');
 	}
 	users.findOne({_id:req.user.id}, function(err, user){
-		if(user.profileSteps<2){
+		if(!user.profileSteps || user.profileSteps < 2){
 			return res.render('first_steps', {
 				user : user
 			});
@@ -41,12 +41,14 @@ router.put('/', function(req, res){
 	    skills[i] = skills[i].toLowerCase();
 	  }
 	}
+
+	//lowerCase the interests
 	if(interests){
-		//lowerCase the interests
 		for(var i= 0 ; i < interests.length; i++){
 	    interests[i] = interests[i].toLowerCase();
 	  }
 	}
+
 	user.name = name || user.name;
 	user.surname = surname || user.surname;
 	user.fullname = user.name + " " + user.surname;
