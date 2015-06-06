@@ -60,6 +60,7 @@ router.put('/', function(req, res){
 	user.profileSteps = step || user.profileSteps;
 
 	user.save(function(err, user){
+		req.user = user;
 		return res.json({status:"ok", user:user});
 	});
 });
