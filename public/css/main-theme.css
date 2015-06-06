@@ -19,6 +19,7 @@
 body {
   color: #313131;
   font-size: 16px;
+  background-color: #ecf0f1;
   font-family:"Proxima Nova";
 }
 html,body{
@@ -74,6 +75,9 @@ form{
 }
 .prm-color{
   color:#56c2cc;
+}
+.bg-grey{
+  background-color: #ecf0f1;
 }
 .bg-prm-color{
   color:#fff;
@@ -169,4 +173,16 @@ form input,form textarea{
 }
 .no-padding-left{
   padding-left:0;
+}
+.notifications-container{
+  position:relative;
+}
+.notifications{
+  border-radius: 50% 50% 0;
+  font-size: 16px;
+  left: -22px;
+  line-height: 1;
+  padding: 4px 5px;
+  position: absolute;
+  top: -5px;
 }

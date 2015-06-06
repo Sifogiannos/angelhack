@@ -1,0 +1,65 @@
+header{
+	padding:.5em;
+	font-size:24px;
+}
+select{
+	border:none;
+	background-color: transparent;
+	-webkit-appearance: none;
+}
+select::-ms-expand {
+    display: none;
+}
+.top-bar{
+	padding:1em;
+	border-bottom:1px solid #ccc;
+}
+.select-bar{
+	display:inline-block;
+}
+.choices a,.choices span{
+	color:#999;
+}
+.choices a.active{
+	color:#333;
+}
+.cards {
+	position:relative;
+	padding:1em 0;
+}
+.card{
+	background-color:#fff;
+	padding:10px;
+	margin-bottom:15px;
+}
+.eventLogo{
+	background-image:linear-gradient(rgba(0,0,0, 0.3), rgba(0,0,0, 0.3)),url('/img/eventCover.jpg');
+	min-height:100px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-align: center;
+}
+.eventLogo > *{
+	margin:0;
+	display:inline-block;
+	color:#fff;
+}
+.eventLogo h2{
+	margin-top:15px;
+	font-size:18px;
+}
+.eventLogo h3{
+	font-size:16px;
+}
+.card-details p{
+	margin: 0;
+	padding-top:5px;
+	color:#aaaaaa;
+	font-size:16px;
+}
+.cards .col-xs-6:nth-child(2n+1){
+	padding-right:7.5px;
+}
+.cards .col-xs-6:nth-child(2n){
+	padding-left:7.5px;
+}
