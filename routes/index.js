@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 	if(!req.user){
 		return res.render('login');
 	}
-	user.findOne({_id:req.user.id}, function(err, user){
+	users.findOne({_id:req.user.id}, function(err, user){
 		res.render('first_steps', {
 			user : user
 		});
