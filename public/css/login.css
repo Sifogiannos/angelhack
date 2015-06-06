@@ -3,6 +3,10 @@
 	text-align:center;
 	margin-bottom:25px;
 }
+.input{
+	border-bottom:1px solid #bdccd4;
+	margin-bottom:1em;
+}
 form button{
 	margin:1em 0 ;
 }

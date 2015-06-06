@@ -13,9 +13,19 @@ select::-ms-expand {
 .top-bar{
 	padding:1em;
 	border-bottom:1px solid #ccc;
+	position:relative;
 }
 .select-bar{
 	display:inline-block;
+	vertical-align: middle;
+}
+.select-bar.table-cell{
+	display:table-cell;
+	width:100%;
+}
+.choices{
+	display:inline-block;
+	vertical-align: middle;
 }
 .choices a,.choices span{
 	color:#999;
@@ -62,4 +72,42 @@ select::-ms-expand {
 }
 .cards .col-xs-6:nth-child(2n){
 	padding-left:7.5px;
+}
+.cards a{
+	text-decoration:none;
+}
+.event-background{
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.event-background{
+	color:#fff;
+}
+.event-background h1,.event-background h2{
+	margin:0;
+}
+.event-details{
+	padding:2em 0;
+	text-align: center;
+}
+.choices.open{
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:1px;
+	top:0;
+	background-color: #fff;
+}
+.choices.open i{
+	line-height:56px;
+}
+.choices.open .input input{
+	display:inline-block !important;
+	border:none;
+	padding-left:0;
+}
+.choices.open .input i{
+	padding-left:1em;
+	width:40px;
 }

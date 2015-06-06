@@ -13,7 +13,7 @@
   </head>
 
   <body>
-  	<section class="background-image">
+  	<section id="event-background" class="event-background">
       <div class="overlay"></div>
       <div class="menu-wrap">
         <nav class="menu">
@@ -32,80 +32,35 @@
         <div class="right">
           <a href="#" class="white-color notifications-container" id="notifications"><span class="notifications bg-prm-color">4</span> <i class="fa fa-bell-o"></i></a>
         </div>
+        <div class="event-details">
+          <h1>AngelHack Athens</h1>
+          <h2>June 6-7, 2015</h2>
+        </div>
+        
       </header>
     </section>
-    <section class="bg-grey">
-      <div class="top-bar">
-        <div class="select-bar">
+    <section>
+      <div class="top-bar table">
+        <div class="select-bar table-cell">
           <select name="" id="">
-            <option>Most Popular</option>
-            <option>Latest</option>
+            <option>Similar to you</option>
+            <option>All</option>
           </select>
           <i class="fa fa-angle-down"></i>
         </div>
-        <div class="choices right">
-          <a href="#" class="active">Events</a>
-          <span>/</span>
-          <a href="#">Attendees</a>
-        </div>
-      </div>
-      <div class="cards clearfix">
-        <div class="col-xs-6">
-          <a href="/events/1">
-            <article class="card">
-              <div class="eventLogo">
-                <h2>AngelHack Athens</h2>
-                <h3>June 6-7, 2015</h3>
-              </div>
-              <div class="card-details">
-                <p>233 participants</p>
-              </div>
-            </article>
-          </a>
-        </div>
-        <div class="col-xs-6">
-          <a href="/events/1">
-            <article class="card">
-              <div class="eventLogo">
-                <h2>AngelHack Athens</h2>
-                <h3>June 6-7, 2015</h3>
-              </div>
-              <div class="card-details">
-                <p>233 participants</p>
-              </div>
-            </article>
-          </a>
-        </div>
-        <div class="col-xs-6">
-          <a href="/events/1">
-            <article class="card">
-              <div class="eventLogo">
-                <h2>AngelHack Athens</h2>
-                <h3>June 6-7, 2015</h3>
-              </div>
-              <div class="card-details">
-                <p>233 participants</p>
-              </div>
-            </article>
-          </a>
-        </div>
-        <div class="col-xs-6">
-          <a href="/events/1">
-            <article class="card">
-              <div class="eventLogo">
-                <h2>AngelHack Athens</h2>
-                <h3>June 6-7, 2015</h3>
-              </div>
-              <div class="card-details">
-                <p>233 participants</p>
-              </div>
-            </article>
-          </a>
+        <div class="choices table-cell">
+          <form action="#">
+            <div class="input with-icon">
+              <i class="fa fa-search"></i>
+              <input class="hide" type="text" placeholder="search">
+              <button type="submit" class="hide"></button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/js/dashboard.js"></script>
+    <script src="/js/event.js"></script>
   </body>
 
 </html>

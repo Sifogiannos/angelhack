@@ -134,16 +134,13 @@ form input,form textarea{
 }
 .input{
   position:relative;
-  border-bottom:1px solid #bdccd4;
-  margin-bottom:1em;
 }
 .with-icon{
   display:table;
   width:100%;
 }
 .with-icon > i{
-  display:table-cell;
-  color:#fff;
+  display:table-cell; 
   margin-right:3px;
 }
 .with-icon > input{
@@ -180,9 +177,16 @@ form input,form textarea{
 .notifications{
   border-radius: 50% 50% 0;
   font-size: 16px;
+  font-weight:bold;
   left: -22px;
   line-height: 1;
-  padding: 4px 5px;
+  padding: 3px 5px;
   position: absolute;
   top: -5px;
+}
+.table{
+  display:table;
+}
+.table-cell{
+  display:table-cell;
 }
