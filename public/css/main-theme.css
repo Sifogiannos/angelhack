@@ -69,3 +69,27 @@ a{
 .button-rounded{
   border-radius:30px;
 }
+form input{
+  width:100%;
+  border:none;
+  outline:none;
+  background-color:transparent;
+}
+.input{
+  position:relative;
+  border-bottom:1px solid #bdccd4;
+  display:table;
+  width:100%;
+  margin-bottom:1em;
+}
+.input > i{
+  display:table-cell;
+  color:#fff;
+  margin-right:3px;
+}
+.input > input{
+  display:table-cell;
+}
+.white-color{
+  color:#fff;
+}
