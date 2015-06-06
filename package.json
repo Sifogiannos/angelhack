@@ -19,5 +19,9 @@
     "connect-flash"   : "*",
     "express-session" : "*",
     "connect-mongo"   : "*"
+  },
+  "devDependencies": {
+    "gulp-livereload": "^3.8.0",
+    "gulp":"*"
   }
 }
