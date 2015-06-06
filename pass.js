@@ -90,23 +90,10 @@ module.exports = function(passport, LocalStrategy){
   },
   function(req, accessToken, refreshToken, profile, done){
     req.session.connect_error = undefined;
-    users.findOne({'linkedin.uid': profile.id}).exec(function(err, user){
-      if(err){
-        req.session.connect_error = "linkedin";
-        return done(null, false, { message: 'User not found'});
-      }
-      //if use exists
-      if(user){
-        user = setUserFromLinkedin(user, accessToken, profile);
-      }
-      //if user does not exists create an new one
-      if(!user){
-        user = new users({
-          date_created  : Date.now()
-        });
-        user = setUserFromLinkedin(user, accessToken, profile);
-      }
-      //save new user or update the already existing
+    //if is already logged in
+    if(req.user){
+      var user = req.user;
+      user = setUserFromLinkedin(user, accessToken, profile);
       user.save(function(err, user){
         if(err){
           req.session.connect_error = "linkedin";
@@ -115,9 +102,38 @@ module.exports = function(passport, LocalStrategy){
           return done(null, user);
         }
       });
-    });
+    // if he is not logged in
+    }else{
+      users.findOne({'linkedin.uid': profile.id}).exec(function(err, user){
+        if(err){
+          req.session.connect_error = "linkedin";
+          return done(null, false, { message: 'User not found'});
+        }
+        //if use exists
+        if(user){
+          user = setUserFromLinkedin(user, accessToken, profile);
+        }
+        //if user does not exists create an new one
+        if(!user){
+          user = new users({
+            date_created  : Date.now()
+          });
+          user = setUserFromLinkedin(user, accessToken, profile);
+        }
+        //save new user or update the already existing
+        user.save(function(err, user){
+          if(err){
+            req.session.connect_error = "linkedin";
+            return done(null, false, { message: 'Could not create user'});
+          }else{
+            return done(null, user);
+          }
+        });
+      });
+    }
   }));
-
+  
+  //set properties of user
   function setUserFromLinkedin(person, token, profile){
     person.linkedin={
       exists              : true,
