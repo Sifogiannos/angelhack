@@ -1,9 +1,12 @@
+var crossvent = require('crossvent');
+var insignia = require('insignia');
+window.$ = require('jquery');
 (function(){
 	var submitButton = document.getElementById('submitButton');
 	var stepForms = document.querySelectorAll('.steps form');
 	var insigniaInput = document.getElementById('insignia');
 	var ajax = ajax();
-	insignia(insigniaInput);
+	var nsg = insignia(insigniaInput);
 	var step = 0;
 	initListeners();
 
@@ -27,34 +30,47 @@
 				categories:categories
 			}
 			console.log(data);
-			// $.ajax({
-			// 	url: '/path/to/file',
-			// 	type: 'PUT',
-			// 	data: {param1: 'value1'},
-			// })
-			// .done(function() {
-			// 	console.log("success");
-			// });
+			$.ajax({
+				url: '/',
+				type: 'PUT',
+				data: data,
+			})
+			.done(function() {
+				console.log("success");
+			});
 		}
 		else if(step==1){
-			// $.ajax({
-			// 	url: '/path/to/file',
-			// 	type: 'PUT',
-			// 	data: {param1: 'value1'},
-			// })
-			// .done(function() {
-			// 	console.log("success");
-			// });
+			var data = {
+				skills : nsg.value()
+			}
+			console.log(data);
+			$.ajax({
+				url: '/',
+				type: 'PUT',
+				data: data,
+			})
+			.done(function() {
+				console.log("success");
+			});
 		}
 		else if(step==2){
-			// $.ajax({
-			// 	url: '/path/to/file',
-			// 	type: 'PUT',
-			// 	data: {param1: 'value1'},
-			// })
-			// .done(function() {
-			// 	console.log("success");
-			// });
+			var categoryNodes = document.querySelectorAll('.js-form-step-3.checkbox :checked');
+			var categories = [];
+			for (var i = 0; i < categoryNodes.length; i++) {
+				categories.push(categoryNodes[i].name);
+			};
+			var data = {
+				interests:categories
+			}
+			console.log(data);
+			$.ajax({
+				url: '/',
+				type: 'PUT',
+				data: data,
+			})
+			.done(function() {
+				console.log("success");
+			});
 		}
 		else{
 			//do nothing. Propably error something
