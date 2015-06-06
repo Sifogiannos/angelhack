@@ -7,17 +7,18 @@ var events = mongoose.model( 'events', events );
 
 
 router.get('/events/:event_id', function(req, res) {
+	var event_id = req.params.event_id;
   if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
 	var user = req.user;
-	events.findOne({_id:event_id}).populate('participants').lean().exec(function(err, event){
+	var populate = {path:'participants', select:'-linkedin -interests'};
+	events.findOne({_id:event_id}).populate(populate).exec(function(err, event){
+		event.toObject();
 		var userArray = [];
 		var participantsArray = [];
-		var participants = event.participants;
 		
-		//remove user from participants
-	  participants = removeFromParticipants(user._id, participants);
+		var participants = event.participants;
 
 	  //create user category array [0, 0, 0, 0]
 	  userArray = userCategoryArray(user.categories);
@@ -29,23 +30,8 @@ router.get('/events/:event_id', function(req, res) {
 	});
 });
 
-function removeFromParticipants(user_id, participants){
-	var iterator;
-	//remove user from participants
-	for(var i= 0 ; i < participants.length; i++){
-		if(participants[i]._id.equals(user_id)){
-			iterator = i;
-			break;
-		}
-  }
-  if(iterator){
-  	participants = participants.splice(iterator, 1);
-  }
-  return participants;
-}
-
 function userCategoryArray(userCategories){
-	var returnArray = [];
+	var returnArray = [0, 0, 0, 0];
 	//create the zero or one array
 	for(var i= 0 ; i < userCategories.length; i++){
 		if(userCategories[i] == 'developer'){
@@ -60,13 +46,12 @@ function userCategoryArray(userCategories){
   }
   return returnArray;
 }
-
 function participantsCategoryArray(participants){
 	//create the zero or one array
 	participantsReturnArray = [];
 	for(var i= 0 ; i < participants.length; i++){
 		var userCategories = participants[i].categories;
-		participantsReturnArray.push(userCategoryArray());
+		participantsReturnArray.push(userCategoryArray(userCategories));
   }
   return participantsReturnArray;
 }
