@@ -39,18 +39,20 @@ router.get('/:event_id/search', function(req, res){
 	if(!search){
 		search = "";
 	}
-	
+
 	var query = {'$or':[{fullname : new RegExp(search, "i")}, {company_title : new RegExp(search, "i")}, {company : new RegExp(search, "i")}]};
 
+	var populate = {path:'participants', match:query, select:'-linkedin -interests', options:{sort:{'fullname':-1}}};
+	
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
 
-	users.find(query, '-linkedin -interests',function(err, participants){
+	events.findOne({_id:event_id}).populate(populate).exec(function(err, event){
 		if(err){
 			return res.json({status:"error", message:"Server error"});
 		}
-		return res.json({status:"ok", users:participants});
+		return res.json({status:"ok", event:event});
 	});
 });
 
