@@ -8,7 +8,7 @@ var events = mongoose.model( 'events', events );
 
 router.get('/', function(req, res){
 	var mostPopular = req.body.mostPopular;
-	var sort = "date_created";
+	var sort = "begin_date";
 	if(mostPopular){
 		sort = "participants";
 	}
