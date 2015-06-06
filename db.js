@@ -13,7 +13,8 @@ var users = new Schema({
 	company_title 			: String,
 	picture_Url					: String,
 	public_Profile_Url 	: String,
-	category 						: String, 					
+	categories 					: [String],
+	skills  						: [String], 					
 	linkedin        		: {
     exists              : { type: Boolean, default: false },
     token               : String,
@@ -27,7 +28,32 @@ var users = new Schema({
   last_login 					: Date
 });
 
+var events = new Schema({
+	title 				: String,
+	begin_date 		: Date,
+	end_date 			: Date,
+	participants 	: [{ type: Schema.Types.ObjectId, ref: 'users' }],
+	cover 				: String
+});
+
+var messages = new Schema({
+	to 				: { type: Schema.Types.ObjectId, ref: 'users' },
+	from 			: { type: Schema.Types.ObjectId, ref: 'users' },
+	timestamp : Date,
+	content		: String
+});
+
+var notifications = new Schema({
+	owner 				: { type: Schema.Types.ObjectId, ref: 'users' },
+	html_content 	: String,
+	timestamp  		: Date,
+	message  			: { type: Schema.Types.ObjectId, ref: 'messages' }
+});
+
 
 mongoose.model( 'users', users );
+mongoose.model( 'events', events );
+mongoose.model( 'messages', messages );
+mongoose.model( 'ntoifications', ntoifications );
 
 mongoose.connect( 'mongodb://localhost/test' );

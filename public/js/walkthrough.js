@@ -14,11 +14,17 @@
 	function postData(e){
 		e.preventDefault();
 		if(step==0){
+			var categoryNodes = document.querySelectorAll('.js-form-step-1 .checkbox :checked');
+			var categories = [];
+			for (var i = 0; i < categoryNodes.length; i++) {
+				categories.push(categoryNodes[i].name);
+			};
 			var data = {
 				name:document.getElementById('fname').value,
 				surname:document.getElementById('lname').value,
 				jobTitle:document.getElementById('jobTitle').value,
-				company:document.getElementById('company').value
+				company:document.getElementById('company').value,
+				categories:categories
 			}
 			console.log(data);
 			// $.ajax({
