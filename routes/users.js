@@ -17,14 +17,18 @@ router.get('/events/:event_id', function(req, res) {
 		event.toObject();
 		var userArray = [];
 		var participantsArray = [];
-		
+
 		var participants = event.participants;
 
 	  //create user category array [0, 0, 0, 0]
-	  userArray = userCategoryArray(user.categories);
+	  userArray = userCategoryArray(user.interests);
 
 	  //create participants category array [0, 0, 0, 0]
 	  participantsArray = participantsCategoryArray(participants);
+
+	  //find interest semilarity rate
+	  //for one user
+	  console.log(interestSimilarity(userArray, participantsArray[0]));
 
 		return res.json({status:"ok", allUsers:participants});
 	});
@@ -54,6 +58,18 @@ function participantsCategoryArray(participants){
 		participantsReturnArray.push(userCategoryArray(userCategories));
   }
   return participantsReturnArray;
+}
+function interestSimilarity(interests, categories){
+	var myInterestCategories = 0, similarCategories = 0;
+	for(var i= 0 ; i < interests.length; i++){
+		if(interests[i]){
+			myInterestCategories++;
+			if(interests[i] == categories[i]){
+				similarCategories++;
+			}
+		}
+  }
+  return (similarCategories/myInterestCategories)*100;
 }
 
 module.exports = router;
