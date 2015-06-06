@@ -3,6 +3,8 @@ var key       = 'secret';
 var algorithm = 'sha1';
 var hash, hmac;
 
+var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+
 var mongoose = require( 'mongoose' );
 var users = mongoose.model( 'users', users );
 
@@ -38,7 +40,7 @@ module.exports = function(passport, LocalStrategy){
     });
   });
 
-
+  // Local authentication
   passport.use(new LocalStrategy(
     function(username, password, done) {
       // asynchronous verification, for effect...
@@ -77,4 +79,62 @@ module.exports = function(passport, LocalStrategy){
       });
     }
   ));
+  
+  //LinkedIn authentication
+  passport.use(new LinkedInStrategy({
+    clientID          : "77777mo8nw82c4",
+    clientSecret      : "F4aPxOkLMLSbriRB",
+    callbackURL       : "/auth/linkedin/callback",
+    scope             : [ 'r_emailaddress', 'r_basicprofile' ],
+    passReqToCallback : true
+  },
+  function(req, accessToken, refreshToken, profile, done){
+    req.session.connect_error = undefined;
+    users.findOne({'linkedin.uid': profile.id}).exec(function(err, user){
+      if(err){
+        req.session.connect_error = "linkedin";
+        return done(null, false, { message: 'User not found'});
+      }
+      //if use exists
+      if(user){
+        user = setUserFromLinkedin(user, accessToken, profile);
+      }
+      //if user does not exists create an new one
+      if(!user){
+        user = new users({
+          date_created  : Date.now()
+        });
+        user = setUserFromLinkedin(user, accessToken, profile);
+      }
+      //save new user or update the already existing
+      user.save(function(err, user){
+        if(err){
+          req.session.connect_error = "linkedin";
+          return done(null, false, { message: 'Could not create user'});
+        }else{
+          return done(null, user);
+        }
+      });
+    });
+  }));
+
+  function setUserFromLinkedin(person, token, profile){
+    person.linkedin={
+      exists              : true,
+      token               : token,
+      headline            : profile._json.headline,
+      industry            : profile._json.industry,
+      uid                 : profile.id,
+      location            : profile._json.location.name,
+      numofConnections    : profile._json.numConnections,
+    };
+    person.name = profile.name.givenName;
+    person.surname = profile.name.familyName;
+    person.fullname = person.name + " " + person.surname;
+    person.email = profile._json.emailAddress;
+    person.picture_Url = profile._json.pictureUrl,
+    person.public_Profile_Url = profile._json.publicProfileUrl,
+    person.last_login = Date.now();
+    return person;
+  }
 };

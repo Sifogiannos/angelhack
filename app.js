@@ -52,7 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', user);
 
-//authentication
+//Local authentication
 app.get('/login', authentication.login);
 app.get('/signup', authentication.signup);
 app.post('/create_user', authentication.createUser);
@@ -60,7 +60,18 @@ app.post('/login',
   passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
   function(req, res){
     res.redirect('/');
-    //return res.json({status:"ok", data:req.user});
+  }
+);
+//LinkedIn authentication
+app.get('/auth/linkedin', passport.authenticate('linkedin', {state:'angelhack'}), function(req, res){});
+app.get('/auth/linkedin/callback', 
+  passport.authenticate('linkedin', {failureRedirect: '/login', failureFlash: true }), 
+  function(req, res) {
+    if(req.session.connect_error){
+      return res.json({status:"error", message:"connection error "+ req.session.connect_error});
+    }else{
+      return res.redirect('/');
+    }
   }
 );
 
