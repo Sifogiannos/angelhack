@@ -105,10 +105,6 @@ module.exports = function(passport, LocalStrategy){
     // if he is not logged in
     }else{
       users.findOne({'linkedin.uid': profile.id}).exec(function(err, user){
-        var x= JSON.parse(profile._raw);
-        console.log(x.positions.values[0])
-        console.log(x.positions);
-
         if(err){
           req.session.connect_error = "linkedin";
           return done(null, false, { message: 'User not found'});
@@ -139,6 +135,18 @@ module.exports = function(passport, LocalStrategy){
   
   //set properties of user
   function setUserFromLinkedin(person, token, profile){
+
+
+    var x = JSON.parse(profile._raw);
+    //find current company name and company title
+    for(var i= 0 ; i < x.positions.values.length; i++){
+      if(x.positions.values[i].isCurrent == true){
+        person.company = x.positions.values[i].company.name;
+        person.company_title = x.positions.values[i].title;
+        break;
+      }
+    }
+
     person.linkedin={
       exists              : true,
       token               : token,

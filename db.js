@@ -10,6 +10,7 @@ var users = new Schema({
 	fullname 						: String, 
 	email								: String,
 	company 						: String,
+	company_title 			: String,
 	picture_Url					: String,
 	public_Profile_Url 	: String,
 	category 						: String, 					

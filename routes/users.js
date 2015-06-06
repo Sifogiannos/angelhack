@@ -1,12 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
+var mongoose = require( 'mongoose' );
+var users = mongoose.model( 'users', users );
+
 
 router.get('/', function(req, res) {
   if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
-	return res.json({status:"ok", user:req.user});
+	user.findOne({_id:req.user.id}, function(err, user){
+		return res.json({status:"ok", user:user});
+	});
 });
 
 router.put('/', function(req, res){
@@ -29,7 +34,7 @@ router.put('/', function(req, res){
 	user.surname = name || user.surname;
 	user.fullname = user.name + " " + user.surname;
 	user.category = category || user.category;
-	
+
 	user.save(function(err, user){
 		return res.json({status:"ok", user:user});
 	});
