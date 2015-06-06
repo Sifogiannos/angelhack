@@ -28,9 +28,19 @@ html,body{
 }
 a{
   display:inline-block;
+  text-decoration: none;
+}
+a:focus,a:active{
+  outline:none;
+  text-decoration: none;
 }
 form{
   position:relative;
+}
+ul{
+  list-style:none;
+  margin: 0;
+  padding: 0;
 }
 .fullscreen{
   position:absolute;
@@ -134,16 +144,13 @@ form input,form textarea{
 }
 .input{
   position:relative;
-  border-bottom:1px solid #bdccd4;
-  margin-bottom:1em;
 }
 .with-icon{
   display:table;
   width:100%;
 }
 .with-icon > i{
-  display:table-cell;
-  color:#fff;
+  display:table-cell; 
   margin-right:3px;
 }
 .with-icon > input{
@@ -171,6 +178,9 @@ form input,form textarea{
 .border-left-grey{
   border-left:1px solid #ccc;
 }
+.padding{
+  padding: 15px;
+}
 .no-padding-left{
   padding-left:0;
 }
@@ -180,9 +190,18 @@ form input,form textarea{
 .notifications{
   border-radius: 50% 50% 0;
   font-size: 16px;
+  font-weight:bold;
   left: -22px;
   line-height: 1;
-  padding: 4px 5px;
+  padding: 3px 5px;
   position: absolute;
   top: -5px;
+}
+.table{
+  display:table;
+  margin-bottom:0;
+}
+.table-cell{
+  display:table-cell;
+  vertical-align: middle;
 }

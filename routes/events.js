@@ -25,12 +25,13 @@ router.get('/:event_id', function(req, res) {
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
-	events.findOne({_id:event_id}, '-participants', function(err, event){
-		if(err){
-			return res.json({status:"error", message:"Server error"});
-		}
-		return res.json({status:"ok", event:event});
-	});
+	res.render('event');
+	// events.findOne({_id:event_id}, '-participants', function(err, event){
+	// 	if(err){
+	// 		return res.json({status:"error", message:"Server error"});
+	// 	}
+	// 	return res.json({status:"ok", event:event});
+	// });
 });
 
 router.get('/:event_id/search', function(req, res){

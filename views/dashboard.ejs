@@ -22,7 +22,7 @@
             <a href="#" id="agendaLink"><i class="fa fa-fw fa-dashboard"></i><span>Dashboard</span></a>
             <a href="#" id="panelRef"><i class="fa fa-fw fa-envelope-o"></i><span>Messages</span></a>
             <a href="#" id="sponsorsLink"><i class="fa fa-fw fa-cogs"></i><span>Profile</span></a>
-            <a href="#" id="aboutLink"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a>
+            <a href="/logout" id="aboutLink"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a>
           </div>
         </nav>
         <button id="close-button" class="close-button">Close menu</button>
@@ -32,71 +32,87 @@
         <div class="right">
           <a href="#" class="white-color notifications-container" id="notifications"><span class="notifications bg-prm-color">4</span> <i class="fa fa-bell-o"></i></a>
         </div>
+        <form class="search-form" id="search-form">
+          <div class="input with-icon">
+            <i class="fa fa-search"></i>
+            <input id="search-input" type="text" placeholder="find people">
+          </div>
+          <button class="hide" type="submit"></button>
+        </form>
       </header>
     </section>
     <section class="bg-grey">
       <div class="top-bar">
         <div class="select-bar">
-          <select name="" id="">
-            <option>Most Popular</option>
-            <option>Latest</option>
+          <select name="selector" id="event-selector">
+            <option value="popular">Most Popular</option>
+            <option value="latest">Latest</option>
           </select>
           <i class="fa fa-angle-down"></i>
         </div>
-        <div class="choices right">
-          <a href="#" class="active">Events</a>
+        <div class="choices right" id="option-list">
+          <a href="#" class="active" data-option="events">Events</a>
           <span>/</span>
-          <a href="#">Attendees</a>
+          <a href="#" data-option="users">Attendees</a>
         </div>
       </div>
       <div class="cards clearfix">
         <div class="col-xs-6">
-          <article class="card">
-            <div class="eventLogo">
-              <h2>AngelHack Athens</h2>
-              <h3>June 6-7, 2015</h3>
-            </div>
-            <div class="card-details">
-              <p>233 participants</p>
-            </div>
-          </article>
+          <a href="/events/1">
+            <article class="card">
+              <div class="eventLogo">
+                <h2>AngelHack Athens</h2>
+                <h3>June 6-7, 2015</h3>
+              </div>
+              <div class="card-details">
+                <p>233 participants</p>
+              </div>
+            </article>
+          </a>
         </div>
         <div class="col-xs-6">
-          <article class="card">
-            <div class="eventLogo">
-              <h2>AngelHack Athens</h2>
-              <h3>June 6-7, 2015</h3>
-            </div>
-            <div class="card-details">
-              <p>233 participants</p>
-            </div>
-          </article>
+          <a href="/events/1">
+            <article class="card">
+              <div class="eventLogo">
+                <h2>AngelHack Athens</h2>
+                <h3>June 6-7, 2015</h3>
+              </div>
+              <div class="card-details">
+                <p>233 participants</p>
+              </div>
+            </article>
+          </a>
         </div>
         <div class="col-xs-6">
-          <article class="card">
-            <div class="eventLogo">
-              <h2>AngelHack Athens</h2>
-              <h3>June 6-7, 2015</h3>
-            </div>
-            <div class="card-details">
-              <p>233 participants</p>
-            </div>
-          </article>
+          <a href="/events/1">
+            <article class="card">
+              <div class="eventLogo">
+                <h2>AngelHack Athens</h2>
+                <h3>June 6-7, 2015</h3>
+              </div>
+              <div class="card-details">
+                <p>233 participants</p>
+              </div>
+            </article>
+          </a>
         </div>
         <div class="col-xs-6">
-          <article class="card">
-            <div class="eventLogo">
-              <h2>AngelHack Athens</h2>
-              <h3>June 6-7, 2015</h3>
-            </div>
-            <div class="card-details">
-              <p>233 participants</p>
-            </div>
-          </article>
+          <a href="/events/1">
+            <article class="card">
+              <div class="eventLogo">
+                <h2>AngelHack Athens</h2>
+                <h3>June 6-7, 2015</h3>
+              </div>
+              <div class="card-details">
+                <p>233 participants</p>
+              </div>
+            </article>
+          </a>
         </div>
       </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/libs/crossvent.min.js"></script>
     <script src="/js/dashboard.js"></script>
   </body>
 

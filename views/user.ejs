@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name = "viewport"  content="minimal-ui width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0">
+    <meta name = "msapplication-tap-highlight" content="no">
+    <title>Stranded | Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/main-theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/side-menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/insignia.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+  </head>
+
+  <body>
+    <div class="overlay"></div>
+      <div class="menu-wrap">
+      <nav class="menu">
+        <div class="icon-list">
+          <h2>Stranded</h2>
+          <a href="#" id="agendaLink"><i class="fa fa-fw fa-dashboard"></i><span>Dashboard</span></a>
+          <a href="#" id="panelRef"><i class="fa fa-fw fa-envelope-o"></i><span>Messages</span></a>
+          <a href="#" id="sponsorsLink"><i class="fa fa-fw fa-cogs"></i><span>Profile</span></a>
+          <a href="/logout" id="aboutLink"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a>
+        </div>
+      </nav>
+      <button id="close-button" class="close-button">Close menu</button>
+    </div>
+  	<section class="user-background">
+    <div id="user-background" class="user-bg">
+      <img src="" alt="">
+    </div>
+      <div class="user-content">
+        <header>
+          <a href="#" id="open-button" class="white-color"><i class="fa fa-bars"></i></a>
+          <a href="/" class="white-color" style="font-size:18px">| Go Back</a>
+          <div class="right">
+            <a href="#" class="white-color notifications-container" id="notifications"><span class="notifications bg-prm-color">4</span> <i class="fa fa-bell-o"></i></a>
+          </div>
+          <div class="user-details text-center">
+            <img src="/img/nick.jpg" alt="">
+            <h3>Nick Rossolatos</h3>
+            <p>CTO @ panelsensor</p>
+            <button class="button bg-prm-color button-rounded"><i class="fa fa-envelope-o"></i> Send a message</button>
+          </div>
+          
+        </header>
+      </div>
+    </section>
+    <section>
+      <div class="top-bar table">
+        <div class="select-bar table-cell">
+          <p>Already met with 43  people</p>
+        </div>
+        <div class="choices table-cell">
+          <p>Skills</p>
+        </div>
+      </div>
+      <div class="user-overview">
+        <h3>Overview</h3>
+        <p>Methodical, organised and not afraid to wrestle with multiple complex 
+          projects, Nick's talents lie in constantly pushing his skills further.</p>
+          <p>
+            Experienced in full stack coding, he combines front end and back end 
+            development with an eye for design and a love of photography - all 
+            with a good understanding of business requirements.
+          </p>
+          <h3>My skills are </h3>
+          <p><span class="nsg-tag">Node.js</span><span class="nsg-tag">MongoDb</span></p>
+      </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/user.js"></script>
+  </body>
+
+</html>

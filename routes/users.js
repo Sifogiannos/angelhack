@@ -33,6 +33,23 @@ router.get('/events/:event_id', function(req, res) {
 		return res.json({status:"ok", allUsers:participants});
 	});
 });
+router.get('/:user_id',function(req,res){
+	return res.render('user');
+})
+function removeFromParticipants(user_id, participants){
+	var iterator;
+	//remove user from participants
+	for(var i= 0 ; i < participants.length; i++){
+		if(participants[i]._id.equals(user_id)){
+			iterator = i;
+			break;
+		}
+  }
+  if(iterator){
+  	participants = participants.splice(iterator, 1);
+  }
+  return participants;
+}
 
 function userCategoryArray(userCategories){
 	var returnArray = [0, 0, 0, 0];

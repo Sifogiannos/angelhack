@@ -6,16 +6,37 @@ select{
 	border:none;
 	background-color: transparent;
 	-webkit-appearance: none;
+	-moz-appearance:none;
 }
 select::-ms-expand {
     display: none;
 }
+.search-form{
+	padding:1em;
+}
+.search-form .input{
+	border-bottom:1px solid #ccc;
+	font-size:18px;
+}
 .top-bar{
 	padding:1em;
 	border-bottom:1px solid #ccc;
+	position:relative;
+}
+.top-bar p{
+	margin-bottom:0;
 }
 .select-bar{
 	display:inline-block;
+	vertical-align: middle;
+}
+.select-bar.table-cell{
+	display:table-cell;
+	width:100%;
+}
+.choices{
+	display:inline-block;
+	vertical-align: middle;
 }
 .choices a,.choices span{
 	color:#999;
@@ -62,4 +83,116 @@ select::-ms-expand {
 }
 .cards .col-xs-6:nth-child(2n){
 	padding-left:7.5px;
+}
+.cards a{
+	text-decoration:none;
+}
+.event-background{
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.user-background{
+	position:relative;
+	min-height: 290px;
+}
+.event-background,.user-background{
+	color:#fff;
+}
+.user-bg{
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+  	z-index:1;
+  	position:absolute;
+  	left:-5px;
+  	right:0;
+  	top:0;
+  	bottom:0;
+  	overflow:hidden;
+}
+.user-bg img{
+	filter: blur(4px);
+  	-webkit-filter: blur(4px);
+  	width:100%;
+}
+.user-content{
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	top:0;
+	z-index:2;
+	background-color:rgba(0,0,0,0.4)
+}
+.event-background h1,.event-background h2{
+	margin:0;
+}
+.user-details img{
+	width:80px;
+	height:80px;
+	border-radius: 50%;
+	margin-bottom:.5em;
+}
+.user-background .user-details p{
+	margin-bottom:1em;
+	color:#ccc;
+	font-size:16px;
+}
+.user-details button{
+	font-size: 16px;
+	padding:.5em 1em;
+}
+.event-details{
+	padding:2em 0;
+	text-align: center;
+}
+.choices.open{
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:1px;
+	top:0;
+	background-color: #fff;
+}
+.choices.open i{
+	line-height:56px;
+}
+.choices.open .input input{
+	display:inline-block !important;
+	border:none;
+	padding-left:0;
+}
+.choices.open .input i{
+	padding-left:1em;
+	width:40px;
+}
+.user-list .user{
+	padding:0 1em;
+	border-bottom:1px solid #ccc;
+	background-color: #fff;
+}
+.user-photo{
+	width:60px;
+}
+.user-photo img{
+	border-radius:50%;
+	width:60px;
+	height:60px;
+}
+.user-details{
+	padding:1em;
+}
+.user-details > *{
+	margin: 0;
+}
+.user-details p{
+	color:#959595;
+	margin-top:-3px;
+}
+.user-overview{
+	padding:15px;
+}
+.user-overview h3:first-child{
+	margin-top:0;
 }

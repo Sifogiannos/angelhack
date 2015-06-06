@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name = "viewport"  content="minimal-ui width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0">
+    <meta name = "msapplication-tap-highlight" content="no">
+    <title>Stranded | Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/main-theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/side-menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+  </head>
+
+  <body>
+  	<section id="event-background" class="event-background">
+      <div class="overlay"></div>
+      <div class="menu-wrap">
+        <nav class="menu">
+          <div class="icon-list">
+            <h2>Stranded</h2>
+            <a href="#" id="agendaLink"><i class="fa fa-fw fa-dashboard"></i><span>Dashboard</span></a>
+            <a href="#" id="panelRef"><i class="fa fa-fw fa-envelope-o"></i><span>Messages</span></a>
+            <a href="#" id="sponsorsLink"><i class="fa fa-fw fa-cogs"></i><span>Profile</span></a>
+            <a href="/logout" id="aboutLink"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a>
+          </div>
+        </nav>
+        <button id="close-button" class="close-button">Close menu</button>
+      </div>
+      <header>
+        <a href="#" id="open-button" class="white-color"><i class="fa fa-bars"></i></a>
+        <a href="/" class="white-color" style="font-size:18px">| Go Back</a>
+        <div class="right">
+          <a href="#" class="white-color notifications-container" id="notifications"><span class="notifications bg-prm-color">4</span> <i class="fa fa-bell-o"></i></a>
+        </div>
+        <div class="event-details">
+          <h1>AngelHack Athens</h1>
+          <h2>June 6-7, 2015</h2>
+        </div>
+        
+      </header>
+    </section>
+    <section>
+      <div class="top-bar table">
+        <div class="select-bar table-cell">
+          <select name="" id="selector">
+            <option value="similar">Similar to you</option>
+            <option value="all">All</option>
+          </select>
+          <i class="fa fa-angle-down"></i>
+        </div>
+        <div class="choices table-cell">
+          <form action="#">
+            <div class="input with-icon">
+              <i class="fa fa-search"></i>
+              <input class="hide" type="text" placeholder="search">
+              <button type="submit" class="hide"></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <ul class="user-list">
+
+        <li class="user table">
+          <a href="/users/1">
+            <div class="user-photo table-cell">
+              <img src="/img/nick.jpg" alt="">
+            </div>
+            <div class="user-details table-cell">
+              <h3>Nick Rossolatos</h3>
+              <p>CTO @ panelsensor</p>
+            </div>
+          </a>
+        </li>
+        <li class="user table">
+          <div class="user-photo table-cell">
+            <img src="/img/default.png" alt="">
+          </div>
+          <div class="user-details table-cell">
+            <h3>Nick Rossolatos</h3>
+            <p>CTO @ panelsensor</p>
+          </div>
+        </li>
+        <li class="user table">
+          <div class="user-photo table-cell">
+            <img src="/img/nick.jpg" alt="">
+          </div>
+          <div class="user-details table-cell">
+            <h3>Nick Rossolatos</h3>
+            <p>CTO @ panelsensor</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/libs/crossvent.min.js"></script>
+    <script src="/js/event.js"></script>
+  </body>
+
+</html>
