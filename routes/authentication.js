@@ -14,7 +14,7 @@ exports.login = function(req, res){
   if(req.user)
     return res.redirect('/');
   //if not logged in sign in
-  res.render('sign_in',{
+  res.render('login',{
     message: req.flash('error')
   });
 };
@@ -22,7 +22,7 @@ exports.login = function(req, res){
 exports.signup = function(req, res){
   if(req.user)
     return res.redirect('/');
-  return res.render('sign_up');
+  return res.render('signup');
 };
 
 exports.logout = function(req, res){
@@ -39,13 +39,12 @@ exports.createUser = function(req, res){
   //create password hash
   hash = generateHash(req.body.password);
 
-  var mail = req.body.username.toLowerCase();
+  var username = req.body.username.toLowerCase();
   var user = new users({
-    company       : req.body.company,
-    email         : mail,
+    username      : username,
     password      : hash
   });
-  users.findOne({email:mail}).exec(function(err, user_exists){
+  users.findOne({username:username}).exec(function(err, user_exists){
     if(err) 
     	return res.json({status:"error", message:"error occured"});
     if(user_exists)

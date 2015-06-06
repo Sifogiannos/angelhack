@@ -19,7 +19,7 @@ module.exports = function(passport, LocalStrategy){
   }
 
   function findByUsername(username, fn) {
-    users.findOne({email : username.toLowerCase()},function(err,user){
+    users.findOne({username : username.toLowerCase()},function(err,user){
       if(err) 
       	return fn(err);
       if(user)
