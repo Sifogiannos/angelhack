@@ -23,10 +23,10 @@ var users = new Schema({
     industry            : String,
     uid                 : String,
     location            : String,
-    numofConnections    : Number,
-    summary 			: String,
-    participated  		: [{ type: Schema.Types.ObjectId, ref: 'events' }]
+    numofConnections    : Number
   },
+  summary 						: String,
+  participated  			: [{ type: Schema.Types.ObjectId, ref: 'events' }],
   date_created 				: Date,
   last_login 					: Date,
   profileSteps  			: Number
