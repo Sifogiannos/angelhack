@@ -12,9 +12,7 @@
 	openbtn.addEventListener( 'click', toggleMenu );
 	closebtn.addEventListener( 'click', toggleMenu );
 	content.addEventListener( 'click', closeMenu);
-	crossvent.add(sendMessage,'click',function(){
-		alert("send message");
-	})
+
 	function toggleMenu() {
 		if( isOpen ) {
 			body.className=''

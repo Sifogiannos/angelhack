@@ -253,3 +253,6 @@ form input,form textarea{
   color:#2f9ba5;
   cursor:pointer;
 }
+.user-details.table-cell p.subject{
+  margin-top:5px;
+}

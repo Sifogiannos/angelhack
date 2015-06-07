@@ -40,9 +40,8 @@ router.get('/', function(req, res){
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
-	var user = req.user;
-	messages.find({$or:[{from:user._id}, {to:user._id}]}).sort('timeStamp').exec(function(err, myMessages){
-		res.json({status:"ok", messages:myMessages});
+	res.render('inbox',{
+		user:req.user
 	});
 });
 
