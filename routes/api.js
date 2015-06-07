@@ -30,4 +30,17 @@ router.get('/events/:event_id/users', function(req, res) {
 		return res.json({status:"ok", participants:event.participants});
 	});
 });
+router.get('/users/:user_id', function(req, res) {
+	var user_id = req.params.user_id;
+	if(!req.user){
+		return res.json({status:"error", message:"you are not logged in"});
+	}
+	users.findOne({_id:user_id}).exec(function(err, user){
+		if(err){
+			return res.json({status:"error", message:"Server error"});
+		}
+		//Aggregate to find similarities
+		return res.json({status:"ok", user:user});
+	});
+});
 module.exports = router;
