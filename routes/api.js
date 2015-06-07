@@ -87,7 +87,7 @@ router.get('/user/messages', function(req, res) {
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
-	messages.find({$or:[{from:user_id}, {to:user_id}]}).populate('from').sort('timeStamp').exec(function(err, myMessages){
+	messages.find({$or:[{from:user_id}, {to:user_id}]}).populate('from to').sort('timeStamp').exec(function(err, myMessages){
 		res.json({status:"ok", messages:myMessages,user_id:req.user._id});
 	});
 });

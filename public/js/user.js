@@ -2,7 +2,9 @@
 	var openbtn = document.getElementById( 'open-button' );
 	var closebtn = document.getElementById( 'close-button' );
 	var content = document.querySelector('.overlay');
-	var sendMessage = document.getElementById('send-message');
+	var sendButton = document.getElementById('send-message');
+	var sendMessage = document.getElementById('send-message-submit');
+	var messageContent = document.getElementById('message-content');
 	var body = document.querySelector('body');
 	var str = document.URL;
 	var n = str.lastIndexOf('/');
@@ -12,7 +14,20 @@
 	openbtn.addEventListener( 'click', toggleMenu );
 	closebtn.addEventListener( 'click', toggleMenu );
 	content.addEventListener( 'click', closeMenu);
-
+	crossvent.add(sendMessage,'click',function(e){
+		e.preventDefault();
+		user_id;
+		$.ajax({
+			url: '/messages/users/'+user_id,
+			type: 'POST',
+			data: {message: messageContent.value},
+		})
+		.done(function() {
+			$('#composeModal').modal('hide');
+			sendButton.className='button bg-green-color button-rounded'
+			sendButton.innerHTML = '<i class="fa fa-check"></i> Message sent!'
+		})		
+	});
 	function toggleMenu() {
 		if( isOpen ) {
 			body.className=''

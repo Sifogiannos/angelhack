@@ -8,11 +8,12 @@ var notifications = mongoose.model( 'notifications', notifications );
 
 
 router.post('/users/:user_id', function(req, res){
+	var user_id = req.params.user_id;
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
 	var user = req.user;
-	var message = "Hi "+ user.name + ", would you like to meet?";
+	var message = req.body.message || "Hi "+ user.name + ", would you like to meet?";
 
 	var mewMessage = new messages({
 		timeStamp : Date.now(),

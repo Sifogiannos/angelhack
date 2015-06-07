@@ -7,7 +7,7 @@
 	var body = document.querySelector('body');
 	var messages = document.getElementById('messages')
 	var user_id;
-	var messages;
+	var messagesArray;
 	var isOpen = false;
 
 	openbtn.addEventListener( 'click', toggleMenu );
@@ -50,19 +50,19 @@
 			url: '/api/user/messages'
 		})
 		.done(function(response) {
-			messages = response.messages;
+			messagesArray = response.messages;
 			user_id = response.user_id;
 			loadMessages('inbox');
 		});
 	}
 
 	function loadMessages(filter){
-		var templateMessages = messages.filter(function(index) {
+		var templateMessages = messagesArray.filter(function(index) {
 			if(filter=="inbox"){
-				return index.from == user_id;
+				return index.to == user_id;
 			}
 			else{
-				return index.from != user_id;
+				return index.from._id == user_id;
 			}
 		});
 		messages.innerHTML = '';
