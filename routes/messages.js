@@ -38,7 +38,7 @@ router.post('/users/:user_id', function(req, res){
 		});
 
 		newNotifications.save(function(err, notification){
-			pusher.trigger(user_id, 'new-notification', {'fullname': user.fullname, 'company_title': user.company_title, message: message.content});
+			pusher.trigger(user_id, 'new-notification', {'message_id':notification._id,'photo':user.picture_Url,'fullname': user.fullname, 'company_title': user.company_title, message: message.content});
 			res.json({status:"ok", message:message});
 		});
 	});

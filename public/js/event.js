@@ -5,6 +5,7 @@
 	var body = document.querySelector('body');
 	var selector = document.getElementById('selector');
 	var userList = document.getElementById('user-list');
+	var notifications = document.getElementById('push-notification');
 	var str = document.URL;
 	var n = str.lastIndexOf('/');
 	var event_id = str.substring(n + 1);
@@ -16,7 +17,9 @@
 
 	crossvent.add(selector,'change',function(e){
 		var filter = e.target.value;
-	})
+	});
+	var pusher = new Pusher('cd774e2b8a51f506bc9f');
+    var channel;
 	function toggleMenu() {
 		if( isOpen ) {
 			body.className=''
@@ -42,6 +45,14 @@
 			var event = response.event;
 			loadEvent(event);
 			getSimilarUsers();
+			channel = pusher.subscribe(response.user_id);
+		    channel.bind('new-notification', function(data) {
+		      notifications.innerHTML = '<ul class="user-list"><li class="user table"><a href="/messages/'+data.message_id+'" class="full-width"><div class="user-photo table-cell"><img alt="" src="'+data.photo+'"></div><div class="user-details table-cell full-width"><h3>'+data.fullname+'</h3><p class="white-color">'+data.company_title+'</p><p class="white-color">'+data.message.substring(0,30)+'...</p></div></a><div class="table-cell"><i id="close-notifications" class="fa fa-times close-notification"></i></div></li></ul>';
+		      notifications.className += ' show'
+		      crossvent.add(document.getElementById('close-notifications'),'click',function(e){
+		      	notifications.className = 'bg-prm-color push-notifications'
+		      });
+		    });
 		})
 	}
 	function loadEvent(event){

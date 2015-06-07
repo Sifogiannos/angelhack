@@ -260,3 +260,6 @@ form input,form textarea{
 .user-details.table-cell p.subject{
   margin-top:5px;
 }
+.push-notifications .user-details p{
+  color:#fff;
+}

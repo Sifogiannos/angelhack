@@ -6,10 +6,20 @@
 	var optionList = document.getElementById('option-list');
 	var searchForm = document.getElementById('search-form');
 	var searchInput = document.getElementById('search-input');
-	var cards = document.getElementById('cards')
-	var body = document.querySelector('body')
+	var cards = document.getElementById('cards');
+	var body = document.querySelector('body');
+	var notifications = document.getElementById('push-notification');
 	var isOpen = false;
 
+	// Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+    var pusher = new Pusher('cd774e2b8a51f506bc9f');
+    var channel;
 	openbtn.addEventListener( 'click', toggleMenu );
 	closebtn.addEventListener( 'click', toggleMenu );
 	content.addEventListener( 'click', closeMenu);
@@ -77,7 +87,14 @@
 			if(response.events.length > 0 ){
 				loadEvents(response.events)
 			}
-			
+			channel = pusher.subscribe(response.user_id);
+		    channel.bind('new-notification', function(data) {
+		      notifications.innerHTML = '<ul class="user-list"><li class="user table"><a href="/messages/'+data.message_id+'" class="full-width"><div class="user-photo table-cell"><img alt="" src="'+data.photo+'"></div><div class="user-details table-cell full-width"><h3>'+data.fullname+'</h3><p class="white-color">'+data.company_title+'</p><p class="white-color">'+data.message.substring(0,30)+'...</p></div></a><div class="table-cell"><i id="close-notifications" class="fa fa-times close-notification"></i></div></li></ul>';
+		      notifications.className += ' show'
+		      crossvent.add(document.getElementById('close-notifications'),'click',function(e){
+		      	notifications.className = 'bg-prm-color push-notifications'
+		      });
+		    });
 		})	
 	}
 	function loadEvents(events){

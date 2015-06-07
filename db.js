@@ -40,7 +40,7 @@ var events = new Schema({
 	cover 				: String
 });
 // var event = {
-// 	title:"AngelHack London",
+// 	title:"AngelHack Athens",
 // 	begin_date : Date.now(),
 // 	end_date : Date.now(),
 // 	cover: "/img/eventCover.jpg"

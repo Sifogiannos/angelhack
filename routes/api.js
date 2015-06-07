@@ -16,7 +16,7 @@ router.get('/events/:event_id', function(req, res) {
 		if(err){
 			return res.json({status:"error", message:"Server error"});
 		}
-		return res.json({status:"ok", event:event});
+		return res.json({status:"ok", event:event,user_id:req.user._id});
 	});
 });
 router.get('/users', function(req, res) {
@@ -80,7 +80,7 @@ router.get('/users/:user_id', function(req, res) {
 		if(err){
 			return res.json({status:"error", message:"Server error"});
 		}
-		return res.json({status:"ok", user:user});
+		return res.json({status:"ok", user:user,user_id:req.user._id});
 	});
 });
 router.get('/user/messages', function(req, res) {

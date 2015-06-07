@@ -59,12 +59,13 @@
 	function loadMessages(filter){
 		var templateMessages = messagesArray.filter(function(index) {
 			if(filter=="inbox"){
-				return index.to == user_id;
+				return index.to._id == user_id;
 			}
 			else{
 				return index.from._id == user_id;
 			}
 		});
+		console.log(templateMessages);
 		messages.innerHTML = '';
 		if(filter=="inbox"){
 			for (var i = 0; i < templateMessages.length; i++) {
