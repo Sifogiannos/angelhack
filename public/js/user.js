@@ -61,7 +61,7 @@
 			var name = userDetails.querySelector('h3').textContent = user.fullname;
 			var title = userDetails.querySelector('p').textContent = user.company_title;
 			var skills = document.getElementById('skills');
-			var overview = document.getElementById('overview').innerHTML = '<p>Methodical, organised and not afraid to wrestle with multiple complex projects, Nick\'s talents lie in constantly pushing his skills further.</p><p>Experienced in full stack coding, he combines front end and back end development with an eye for design and a love of photography - all with a good understanding of business requirements.</p> '
+			var overview = document.getElementById('overview').innerHTML = user.summary || 'No description'
 			for (var i = 0; i < user.skills.length; i++) {
 				skills.innerHTML+='<span class="nsg-tag">'+user.skills[i]+'</span>'
 			};

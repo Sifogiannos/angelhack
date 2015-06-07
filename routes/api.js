@@ -47,7 +47,7 @@ router.get('/users', function(req, res) {
 		if(similarUsers.length>15){
 			similarUsers.splice(15,similarUsers.length-16);
 		}
-		return res.json({status:"ok", users:users});
+		return res.json({status:"ok", users:similarUsers});
 	});
 });
 router.get('/events/:event_id/users', function(req, res) {
@@ -68,7 +68,15 @@ router.get('/events/:event_id/users', function(req, res) {
 			}
 		};
 		//Aggregate to find similarities
-		return res.json({status:"ok", participants:event.participants});
+		var similarUsers = findSimilarUsers(req.user,event.participants);
+		console.log(similarUsers);
+		similarUsers = similarUsers.sort(function(a,b){
+			return b.similarity-a.similarity;
+		})
+		if(similarUsers.length>15){
+			similarUsers.splice(15,similarUsers.length-16);
+		}
+		return res.json({status:"ok", participants:similarUsers});
 	});
 });
 router.get('/users/:user_id', function(req, res) {

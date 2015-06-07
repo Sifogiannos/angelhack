@@ -73,7 +73,7 @@
 	function loadUsers(users){
 		template ='';
 		for (var i = 0; i < users.length; i++) {
-			template+='<li class="user table bg-white-color"><a href="/users/'+users[i]._id+'"><div class="user-photo table-cell"><img src="'+users[i].picture_Url+'" alt=""></div><div class="user-details table-cell"><h3>'+users[i].fullname+'</h3><p>'+users[i].company_title+' @ '+users[i].company+'</p></div></a></li>';
+			template+='<li class="user table bg-white-color"><a href="/users/'+users[i].user._id+'"><div class="user-photo table-cell"><img src="'+users[i].user.picture_Url+'" alt=""></div><div class="user-details table-cell"><h3>'+users[i].user.fullname+'</h3><p>'+users[i].user.company_title+' @ '+users[i].user.company+'</p></div></a></li>';
 		};
 		userList.innerHTML = template;
 	}

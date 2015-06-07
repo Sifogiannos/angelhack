@@ -27,6 +27,7 @@ var user = require('./routes/users');
 var events = require('./routes/events');
 var api = require('./routes/api');
 var messages = require('./routes/messages');
+var populate = require('./routes/demo');
 
 var app = express();
 
@@ -57,7 +58,9 @@ app.use('/users', user);
 app.use('/events', events);
 app.use('/messages', messages);
 app.use('/api', api);
+app.use('/populate', populate);
 
+var populate = require('./routes/demo');
 //Local authentication
 app.get('/login', authentication.login);
 app.get('/signup', authentication.signup);
