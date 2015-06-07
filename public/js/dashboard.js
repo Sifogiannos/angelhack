@@ -100,7 +100,7 @@
 	function loadEvents(events){
 		var template = '';
 		for (var i = 0; i < events.length; i++) {
-			template+='<div class="col-xs-6"><a href="/events/'+events[i]._id+'"><article class="card"><div class="eventLogo"><h2>'+events[i].title+'</h2><h3>June 6-7, 2015</h3></div><div class="card-details"><p>'+events[i].participants.length+' participants</p></div></article></a></div>'
+			template+='<div class="col-xs-6 col-md-3"><a href="/events/'+events[i]._id+'"><article class="card"><div class="eventLogo"><h2>'+events[i].title+'</h2><h3>June 6-7, 2015</h3></div><div class="card-details"><p>'+events[i].participants.length+' participants</p></div></article></a></div>'
 		};
 		cards.innerHTML = template;
 	}

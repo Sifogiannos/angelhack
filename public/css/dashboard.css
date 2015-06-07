@@ -196,3 +196,18 @@ select::-ms-expand {
 .user-overview h3:first-child{
 	margin-top:0;
 }
+@media only screen and (min-width:420px){
+	.eventLogo{
+		min-height:100px;
+	}
+}
+@media only screen and (min-width:768px){
+	.eventLogo{
+		min-height:150px;
+	}
+}
+@media only screen and (min-width:1280px){
+	.eventLogo{
+		min-height:200px;
+	}
+}
