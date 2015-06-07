@@ -170,7 +170,6 @@ select::-ms-expand {
 .user-list .user{
 	padding:0 1em;
 	border-bottom:1px solid #ccc;
-	background-color: #fff;
 }
 .user-photo{
 	width:60px;

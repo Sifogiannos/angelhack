@@ -118,6 +118,9 @@ ul{
 .font-bold{
   font-weight:bold;
 }
+.full-width{
+  width:100%;
+}
 .button{
   padding:6px 12px;
   border:1px solid transparent;
@@ -163,6 +166,9 @@ form input,form textarea{
 .white-color{
   color:#fff;
 }
+.bg-white-color{
+  background-color: #fff;
+}
 .footer-bottom{
   position:absolute;
   bottom:0;
@@ -204,4 +210,46 @@ form input,form textarea{
 .table-cell{
   display:table-cell;
   vertical-align: middle;
+}
+.push-notifications{
+  position:fixed;
+  left:0;
+  right:0;
+  top:0;
+  z-index:3;
+  -webkit-transform: translate3d(0,-100px,0);
+     -moz-transform: translate3d(0,-100px,0);
+      -ms-transform: translate3d(0,-100px,0);
+       -o-transform: translate3d(0,-100px,0);
+          transform: translate3d(0,-100px,0);
+  -webkit-transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+     -moz-transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+      -ms-transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+       -o-transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+          transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.push-notifications.show{
+  -webkit-transform: translate3d(0,0px,0);
+     -moz-transform: translate3d(0,0px,0);
+      -ms-transform: translate3d(0,0px,0);
+       -o-transform: translate3d(0,0px,0);
+          transform: translate3d(0,0px,0);
+}
+.push-notifications .user-photo{
+  width:40px;
+}
+.push-notifications .user-photo img{
+  width:40px;
+  height:40px;
+}
+.push-notifications .user-details h3{
+  font-size:14px;
+}
+.push-notifications .user-details p{
+  font-size:16px;
+  color:#fff;
+}
+.push-notifications .close-notification{
+  color:#2f9ba5;
+  cursor:pointer;
 }
