@@ -6,6 +6,13 @@ var users = mongoose.model( 'users', users );
 var messages = mongoose.model( 'messages', messages );
 var notifications = mongoose.model( 'notifications', notifications );
 
+var Pusher = require('pusher');
+
+var pusher = new Pusher({
+  appId: '122455',
+  key: 'cd774e2b8a51f506bc9f',
+  secret: 'c655051d34b700c1428d'
+});
 
 router.post('/users/:user_id', function(req, res){
 	var user_id = req.params.user_id;
@@ -31,6 +38,7 @@ router.post('/users/:user_id', function(req, res){
 		});
 
 		newNotifications.save(function(err, notification){
+			pusher.trigger(user_id, 'new-notification', {'fullname': user.fullname, 'company_title': user.company_title, message: message.content});
 			res.json({status:"ok", message:message});
 		});
 	});

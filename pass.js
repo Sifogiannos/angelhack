@@ -161,6 +161,7 @@ module.exports = function(passport, LocalStrategy){
     person.picture_Url = profile._json.pictureUrl,
     person.public_Profile_Url = profile._json.publicProfileUrl,
     person.last_login = Date.now();
+    person.summary = profile.summary;
     return person;
   }
 };

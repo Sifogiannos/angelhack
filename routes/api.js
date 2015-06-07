@@ -6,6 +6,7 @@ var events = mongoose.model( 'events', events );
 var users = mongoose.model( 'users', users );
 var messages = mongoose.model( 'messages', messages );
 
+
 router.get('/events/:event_id', function(req, res) {
 	var event_id = req.params.event_id;
 	if(!req.user){
@@ -209,4 +210,5 @@ function gd(a, b) {
   }
   return (Math.max(a.length,b.length)- matrix[b.length][a.length])/Math.max(a.length,b.length);
 };
+
 module.exports = router;
