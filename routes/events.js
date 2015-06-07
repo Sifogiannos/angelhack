@@ -15,7 +15,7 @@ router.get('/', function(req, res){
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
-	events.find({}, '-participants').sort(sort).exec(function(err, allEvents){
+	events.find({}).sort(sort).exec(function(err, allEvents){
 		return res.json({status:"ok", events:allEvents});
 	});
 });

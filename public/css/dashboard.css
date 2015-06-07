@@ -46,12 +46,12 @@ select::-ms-expand {
 }
 .cards {
 	position:relative;
-	padding:1em 0;
 }
 .card{
 	background-color:#fff;
 	padding:10px;
-	margin-bottom:15px;
+	margin:15px 0;
+
 }
 .eventLogo{
 	background-image:linear-gradient(rgba(0,0,0, 0.3), rgba(0,0,0, 0.3)),url('/img/eventCover.jpg');

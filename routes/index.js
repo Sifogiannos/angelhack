@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var url = require('url')
 var mongoose = require( 'mongoose' );
 var users = mongoose.model( 'users', users );
 
@@ -20,7 +20,24 @@ router.get('/', function(req, res) {
 		});
 	});
 });
+router.get('/search', function(req, res){
 
+	var url_parts = url.parse(req.url, true);
+	var query = url_parts.query.query;
+	var search = query || "";
+	var query = {'$or':[{fullname : new RegExp(search, "i")}, {company_title : new RegExp(search, "i")}, {company : new RegExp(search, "i")}]};
+	
+	if(!req.user){
+		return res.json({status:"error", message:"you are not logged in"});
+	}
+
+	users.find(query,'-linkedin -interests').exec(function(err, users){
+		if(err){
+			return res.json({status:"error", message:"Server error"});
+		}
+		return res.json({status:"ok", users:users});
+	});
+});
 router.put('/', function(req, res){
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});

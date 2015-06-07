@@ -36,6 +36,7 @@ router.get('/events/:event_id', function(req, res) {
 router.get('/:user_id',function(req,res){
 	return res.render('user');
 })
+
 function removeFromParticipants(user_id, participants){
 	var iterator;
 	//remove user from participants

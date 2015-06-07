@@ -25,6 +25,7 @@ var authentication = require('./routes/authentication.js');
 var routes = require('./routes/index');
 var user = require('./routes/users');
 var events = require('./routes/events');
+var api = require('./routes/api');
 var messages = require('./routes/messages');
 
 var app = express();
@@ -55,6 +56,7 @@ app.use('/', routes);
 app.use('/users', user);
 app.use('/events', events);
 app.use('/messages', messages);
+app.use('/api', api);
 
 //Local authentication
 app.get('/login', authentication.login);
@@ -92,27 +94,27 @@ app.use(function(req, res, next) {
 
 // error handlers
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
+// // development error handler
+// // will print stacktrace
+// if (app.get('env') === 'development') {
+//   app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//       message: err.message,
+//       error: err
+//     });
+//   });
+// }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+// // production error handler
+// // no stacktraces leaked to user
+// app.use(function(err, req, res, next) {
+//   res.status(err.status || 500);
+//   res.render('error', {
+//     message: err.message,
+//     error: {}
+//   });
+// });
 
 
 module.exports = app;
