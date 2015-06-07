@@ -23,7 +23,8 @@
     "passport": "*",
     "passport-linkedin-oauth2": "*",
     "passport-local": "*",
-    "serve-favicon": "~2.2.1"
+    "serve-favicon": "~2.2.1",
+    "pusher": "*"
   },
   "devDependencies": {
     "browserify": "^10.2.3",
