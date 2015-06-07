@@ -4,6 +4,7 @@ var router = express.Router();
 var mongoose = require( 'mongoose' );
 var events = mongoose.model( 'events', events );
 var users = mongoose.model( 'users', users );
+var messages = mongoose.model( 'messages', messages );
 
 router.get('/events/:event_id', function(req, res) {
 	var event_id = req.params.event_id;
@@ -81,6 +82,16 @@ router.get('/users/:user_id', function(req, res) {
 		return res.json({status:"ok", user:user});
 	});
 });
+router.get('/user/messages', function(req, res) {
+	var user_id = req.user._id;
+	if(!req.user){
+		return res.json({status:"error", message:"you are not logged in"});
+	}
+	messages.find({$or:[{from:user_id}, {to:user_id}]}).populate('from').sort('timeStamp').exec(function(err, myMessages){
+		res.json({status:"ok", messages:myMessages,user_id:req.user._id});
+	});
+});
+	
 function findSimilarUsers(user,users){
 	var myCatArray = userCategoryArray;
 	var similarUsers = [];
