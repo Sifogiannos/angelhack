@@ -51,43 +51,4 @@ function removeFromParticipants(user_id, participants){
   }
   return participants;
 }
-
-function userCategoryArray(userCategories){
-	var returnArray = [0, 0, 0, 0];
-	//create the zero or one array
-	for(var i= 0 ; i < userCategories.length; i++){
-		if(userCategories[i] == 'developer'){
-			returnArray[0] = 1;
-		}else if(userCategories[i] == 'designer'){
-			returnArray[1] = 1;
-		}else if(userCategories[i] == 'enterpreneur'){
-			returnArray[2] = 1;
-		}else{
-			returnArray[3] = 1;
-		}
-  }
-  return returnArray;
-}
-function participantsCategoryArray(participants){
-	//create the zero or one array
-	participantsReturnArray = [];
-	for(var i= 0 ; i < participants.length; i++){
-		var userCategories = participants[i].categories;
-		participantsReturnArray.push(userCategoryArray(userCategories));
-  }
-  return participantsReturnArray;
-}
-function interestSimilarity(interests, categories){
-	var myInterestCategories = 0, similarCategories = 0;
-	for(var i= 0 ; i < interests.length; i++){
-		if(interests[i]){
-			myInterestCategories++;
-			if(interests[i] == categories[i]){
-				similarCategories++;
-			}
-		}
-  }
-  return (similarCategories/myInterestCategories)*100;
-}
-
 module.exports = router;

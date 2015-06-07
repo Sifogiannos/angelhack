@@ -24,6 +24,8 @@ var users = new Schema({
     uid                 : String,
     location            : String,
     numofConnections    : Number,
+    summary 			: String,
+    participated  		: [{ type: Schema.Types.ObjectId, ref: 'events' }]
   },
   date_created 				: Date,
   last_login 					: Date,
@@ -38,7 +40,7 @@ var events = new Schema({
 	cover 				: String
 });
 // var event = {
-// 	title:"AngelHack Athens",
+// 	title:"AngelHack London",
 // 	begin_date : Date.now(),
 // 	end_date : Date.now(),
 // 	cover: "/img/eventCover.jpg"

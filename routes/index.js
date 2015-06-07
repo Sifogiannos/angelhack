@@ -35,6 +35,14 @@ router.get('/search', function(req, res){
 		if(err){
 			return res.json({status:"error", message:"Server error"});
 		}
+		var x =req.user.id.toString();
+		
+		for (var i = 0; i < users.length; i++) {
+			var y = users[i]._id.toString();
+			if(x==y){
+				users.splice(i,1);
+			}
+		};
 		return res.json({status:"ok", users:users});
 	});
 });
