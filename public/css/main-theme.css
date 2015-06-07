@@ -159,6 +159,7 @@ form input,form textarea{
 .with-icon > i{
   display:table-cell; 
   margin-right:3px;
+  width:10px;
 }
 .with-icon > input{
   display:table-cell;
