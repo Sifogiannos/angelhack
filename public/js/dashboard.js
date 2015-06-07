@@ -54,7 +54,7 @@
 				var option = e.target.dataset.option;
 				if(option=="users"){
 					eventSelector.innerHTML = '<option value="similar">Interesting users</option>'
-					getAttendees('similarities');
+					getUsers('similarities');
 				}
 				else{
 					eventSelector.innerHTML = '<option value="popular">Most Popular</option><option value="latest">Latest</option>'
@@ -87,16 +87,15 @@
 		};
 		cards.innerHTML = template;
 	}
-	function getAttendees(filter){
+	function getUsers(filter){
 		$.ajax({
-			url: '/users',
+			url: '/api/users',
 			data:{filter: filter}
 		})
 		.done(function(response) {
 			if(response.users.length > 0 ){
 				loadUsers(response.users)
 			}
-			
 		})	
 	}
 	function loadUsers(users){

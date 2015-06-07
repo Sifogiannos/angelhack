@@ -17,6 +17,18 @@ router.get('/events/:event_id', function(req, res) {
 		return res.json({status:"ok", event:event});
 	});
 });
+router.get('/users', function(req, res) {
+	if(!req.user){
+		return res.json({status:"error", message:"you are not logged in"});
+	}
+	users.find({},function(err, users){
+		if(err){
+			return res.json({status:"error", message:"Server error"});
+		}
+		//Get similarities by event matching AND category-skill matching
+		return res.json({status:"ok", users:users});
+	});
+});
 router.get('/events/:event_id/users', function(req, res) {
 	var event_id = req.params.event_id;
 	if(!req.user){
