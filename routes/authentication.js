@@ -57,6 +57,13 @@ exports.createUser = function(req, res){
           if (err) 
           	return res.json({status:"error", message:"error occured"});
 
+
+            //insert 
+            events.findOneAndUpdate({}, {$push:{participants:user._id}}, function(err, event){
+              users.findOneAndUpdate({_id:user._id}, {$push:{participated:event._id}}, function(err){});
+            });
+            
+
       		return res.redirect('/');
         });
       });
