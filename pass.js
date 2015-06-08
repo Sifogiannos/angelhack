@@ -1,3 +1,6 @@
+var mongoose = require( 'mongoose' );
+var events = mongoose.model( 'events', events );
+
 var crypto    = require('crypto');
 var key       = 'secret';
 var algorithm = 'sha1';
@@ -121,6 +124,14 @@ module.exports = function(passport, LocalStrategy){
           user = setUserFromLinkedin(user, accessToken, profile);
           //save new user or update the already existing
           user.save(function(err, user){
+
+
+            //insert 
+            events.findOneAndUpdate({}, {$push:{participants:user._id}}, function(err, event){
+              users.findOneAndUpdate({_id:user._id}, {$push:{participated:event._id}}, function(err){});
+            });
+            
+
             if(err){
               req.session.connect_error = "linkedin";
               return done(null, false, { message: 'Could not create user'});
