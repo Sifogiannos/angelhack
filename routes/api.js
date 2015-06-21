@@ -20,34 +20,45 @@ router.get('/events/:event_id', function(req, res) {
 	});
 });
 router.get('/users', function(req, res) {
+
+	//TODO: remove after authentication
+	req.user = {
+		_id:'5586fc570a44ab0413f9baa5'
+	}
+
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
-	events.find({'participants':req.user._id}).lean().populate('participants').exec(function(err, events){
-		if(err){
-			return res.json({status:"error", message:"Server error"});
-		}
-		var users = [];
-		var obj = req.user.toObject();
-		for (var i = 0; i < events.length; i++) {
-			events[i].participants.forEach(function(participant){
-				var x =req.user.id.toString();
-				var y = participant._id.toString();
-				if( x != y ){
-					//TODO: parsing double users maybe
-					users.push(participant);
-				}
-			});
-		};
-		//Get similarities by event matching AND category-skill matching
-		var similarUsers = findSimilarUsers(req.user,users);
-		similarUsers = similarUsers.sort(function(a,b){
-			return b.similarity-a.similarity;
-		})
-		if(similarUsers.length>15){
-			similarUsers.splice(15,similarUsers.length-16);
-		}
-		return res.json({status:"ok", users:similarUsers});
+	//TODO: remove user get after authentication
+	users.findOne({_id:req.user._id},function(err,user){
+		req.user = user;
+		//TODO: remove to this line 
+		events.find({'participants':req.user._id}).lean().populate('participants').exec(function(err, events){
+			if(err){
+				return res.json({status:"error", message:"Server error"});
+			}
+			var participants = [];
+			for (var i = 0; i < events.length; i++) {
+				events[i].participants.forEach(function(participant){
+					var x =req.user.id.toString();
+					var y = participant._id.toString();
+					if( x != y ){
+						//TODO: parsing double users maybe
+						participants.push(participant);
+					}
+				});
+			};
+			//Get similarities by event matching AND category-skill matching
+			var similarUsers = findSimilarUsers(req.user,participants);
+			similarUsers = similarUsers.sort(function(a,b){
+				return b.similarity-a.similarity;
+			})
+			if(similarUsers.length>15){
+				similarUsers.splice(15,similarUsers.length-16);
+			}
+			return res.json({status:"ok", users:similarUsers});
+		});
+		//TODO: dont forget to remove }); from user get
 	});
 });
 router.get('/events/:event_id/users', function(req, res) {
@@ -102,7 +113,7 @@ router.get('/user/messages', function(req, res) {
 });
 	
 function findSimilarUsers(user,users){
-	var myCatArray = userCategoryArray;
+	// var myCatArray = userCategoryArray;
 	var similarUsers = [];
 	for (var i = 0; i < users.length; i++) {
 		similarUsers.push({

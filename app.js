@@ -29,6 +29,8 @@ var api = require('./routes/api');
 var messages = require('./routes/messages');
 var populate = require('./routes/demo');
 
+var cors = require('cors');
+
 var app = express();
 
 // view engine setup
@@ -52,6 +54,8 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors());
 
 app.use('/', routes);
 app.use('/users', user);
@@ -83,6 +87,12 @@ app.get('/auth/linkedin/callback',
     }
   }
 );
+
+//Ember-cli dummy route
+app.get('/auth', function(req,res){
+  return res.json(true);
+});
+
 
 app.get('/logout', authentication.logout);
 
