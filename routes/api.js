@@ -60,8 +60,8 @@ router.get('/users', function(req, res) {
 				similarUsers.splice(15,similarUsers.length-16);
 			}
 			similarUsers.forEach(function(user, index){
-				if(user.public_Profile_Url == "/img/default.png"){
-					similarUsers[index].public_Profile_Url = imgpath + user.public_Profile_Url;
+				if(user.picture_Url == "/img/default.png"){
+					similarUsers[index].picture_Url = imgpath + user.picture_Url;
 				}
 			});
 			return res.json({status:"ok", users:similarUsers});
