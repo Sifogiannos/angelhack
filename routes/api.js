@@ -7,6 +7,9 @@ var users = mongoose.model( 'users', users );
 var messages = mongoose.model( 'messages', messages );
 
 
+var imgpath = 'http://n.panelsensor.com';
+
+
 router.get('/events/:event_id', function(req, res) {
 	var event_id = req.params.event_id;
 	if(!req.user){
@@ -56,6 +59,11 @@ router.get('/users', function(req, res) {
 			if(similarUsers.length>15){
 				similarUsers.splice(15,similarUsers.length-16);
 			}
+			similarUsers.forEach(function(user, index){
+				if(user.public_Profile_Url == "/img/default.png"){
+					similarUsers[index] = imgpath + user.public_Profile_Url;
+				}
+			});
 			return res.json({status:"ok", users:similarUsers});
 		});
 		//TODO: dont forget to remove }); from user get

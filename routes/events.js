@@ -5,6 +5,7 @@ var mongoose = require( 'mongoose' );
 var events = mongoose.model( 'events', events );
 var users = mongoose.model( 'users', users );
 
+var imgpath = 'http://n.panelsensor.com';
 
 router.get('/', function(req, res){
 	var mostPopular = req.body.mostPopular;
@@ -20,7 +21,10 @@ router.get('/', function(req, res){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
 	events.find({}).sort(sort).exec(function(err, allEvents){
-		return res.json({status:"ok", events:allEvents,user_id:req.user._id});
+		allEvents.forEach(function(event, index){
+			allEvents[index] = imgpath + event.cover;
+		});
+		return res.json({status:"ok", events:allEvents, user_id:req.user._id});
 	});
 });
 
