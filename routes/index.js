@@ -4,6 +4,7 @@ var url = require('url')
 var mongoose = require( 'mongoose' );
 var users = mongoose.model( 'users', users );
 
+var imgpath = 'http://n.panelsensor.com';
 
 router.get('/', function(req, res) {
 	if(!req.user){
@@ -33,7 +34,7 @@ router.get('/search', function(req, res){
 		_id:'5573d89f68dde8743379af5d'
 	}
 
-	
+
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
@@ -50,6 +51,11 @@ router.get('/search', function(req, res){
 				users.splice(i,1);
 			}
 		};
+		users.forEach(function(user, index){
+			if(user.picture_Url == "/img/default.png"){
+				users[index].picture_Url = imgpath + user.picture_Url;
+			}
+		});
 		return res.json({status:"ok", users:users});
 	});
 });
