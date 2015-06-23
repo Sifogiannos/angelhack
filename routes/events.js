@@ -22,7 +22,7 @@ router.get('/', function(req, res){
 	}
 	events.find({}).sort(sort).exec(function(err, allEvents){
 		allEvents.forEach(function(event, index){
-			allEvents[index] = imgpath + event.cover;
+			allEvents[index].cover = imgpath + event.cover;
 		});
 		return res.json({status:"ok", events:allEvents, user_id:req.user._id});
 	});

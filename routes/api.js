@@ -61,7 +61,7 @@ router.get('/users', function(req, res) {
 			}
 			similarUsers.forEach(function(user, index){
 				if(user.public_Profile_Url == "/img/default.png"){
-					similarUsers[index] = imgpath + user.public_Profile_Url;
+					similarUsers[index].public_Profile_Url = imgpath + user.public_Profile_Url;
 				}
 			});
 			return res.json({status:"ok", users:similarUsers});
