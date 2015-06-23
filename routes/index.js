@@ -27,6 +27,13 @@ router.get('/search', function(req, res){
 	var search = query || "";
 	var query = {'$or':[{fullname : new RegExp(search, "i")}, {company_title : new RegExp(search, "i")}, {company : new RegExp(search, "i")}]};
 	
+
+	//ΤΟDO : remove after auth
+	req.user = {
+		_id:'5573d89f68dde8743379af5d'
+	}
+
+	
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});
 	}
