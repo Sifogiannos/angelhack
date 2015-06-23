@@ -33,7 +33,7 @@ router.get('/users', function(req, res) {
 		return res.json({status:"error", message:"you are not logged in"});
 	}
 	//TODO: remove user get after authentication
-	users.findOne({_id:req.user._id},function(err,user){
+	users.findOne({_id:req.user._id},function(err, user){
 		req.user = user;
 		//TODO: remove to this line 
 		events.find({'participants':req.user._id}).lean().populate('participants').exec(function(err, events){
@@ -60,8 +60,8 @@ router.get('/users', function(req, res) {
 				similarUsers.splice(15,similarUsers.length-16);
 			}
 			similarUsers.forEach(function(user, index){
-				if(user.picture_Url == "/img/default.png"){
-					similarUsers[index].picture_Url = imgpath + user.picture_Url;
+				if(user.user.picture_Url == "/img/default.png"){
+					similarUsers[index].user.picture_Url = imgpath + user.user.picture_Url;
 				}
 			});
 			return res.json({status:"ok", users:similarUsers});
@@ -88,7 +88,6 @@ router.get('/events/:event_id/users', function(req, res) {
 		};
 		//Aggregate to find similarities
 		var similarUsers = findSimilarUsers(req.user,event.participants);
-		console.log(similarUsers);
 		similarUsers = similarUsers.sort(function(a,b){
 			return b.similarity-a.similarity;
 		})

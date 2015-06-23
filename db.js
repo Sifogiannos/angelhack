@@ -39,13 +39,13 @@ var events = new Schema({
 	participants 	: [{ type: Schema.Types.ObjectId, ref: 'users' }],
 	cover 				: String
 });
-// var event = {
-// 	title:"AngelHack Athens",
-// 	begin_date : Date.now(),
-// 	end_date : Date.now(),
-// 	cover: "/img/eventCover.jpg"
-// }
-var messages = new Schema({
+/*var event = {
+	title:"AngelHack Athens",
+	begin_date : Date.now(),
+	end_date : Date.now(),
+	cover: "/img/eventCover.jpg"
+}
+*/var messages = new Schema({
 	to 				: { type: Schema.Types.ObjectId, ref: 'users' },
 	from 			: { type: Schema.Types.ObjectId, ref: 'users' },
 	timestamp : Date,
