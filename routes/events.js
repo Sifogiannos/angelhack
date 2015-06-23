@@ -14,7 +14,7 @@ router.get('/', function(req, res){
 	}
 	//ΤΟDO : remove after auth
 	req.user = {
-		_id:'5586fc570a44ab0413f9baa5'
+		_id:'5573d89f68dde8743379af5d'
 	}
 	if(!req.user){
 		return res.json({status:"error", message:"you are not logged in"});

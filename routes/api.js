@@ -23,7 +23,7 @@ router.get('/users', function(req, res) {
 
 	//TODO: remove after authentication
 	req.user = {
-		_id:'5586fc570a44ab0413f9baa5'
+		_id:'5573d89f68dde8743379af5d'
 	}
 
 	if(!req.user){
